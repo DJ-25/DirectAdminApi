@@ -1,3 +1,8 @@
+@extends('app')
 
-Lista uzytkowników
+@section('title')
+
+@section('content')
+    Users List
+@endsection
 

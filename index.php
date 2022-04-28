@@ -3,19 +3,20 @@
 require 'vendor/autoload.php';
 
 use App\Services\DirectAdmin\DirectAdminClient;
+use Jenssegers\Blade\Blade;
 
-// $client = new DirectAdminClient();
-// $userList = $client->getUsersList();
-// var_dump($userList);
-
-function showUsersList()
+class DirectAdminController
 {
-    $client = new DirectAdminClient();
-    $userList = $client->getUsersListExample();
-    // var_dump($userList); 
-    
-    include_once 'views/list.blade.php';
+    function showUsersList()
+    {
+        $client = new DirectAdminClient();
+        $userList = $client->getUsersListExample();
+        // var_dump($userList); 
+
+        $blade = new Blade('views', 'cache');
+        return $blade->make('list', ['userList' => $userList])->render();
+    }
 }
 
-showUsersList();
-
+$show = new DirectAdminController();
+echo $show->showUsersList();
