@@ -15,7 +15,10 @@ class DirectAdminController
         $blade = new Blade('views', 'cache');
         return $blade->make('list', ['users' => $userList])->render();
     }
-}
 
-$show = new DirectAdminController();
-echo $show->showUsersList();
+    function showCreateUserForm()
+    {
+        $blade = new Blade('views', 'cache');
+        return $blade->make('create_view')->render();
+    }
+}
