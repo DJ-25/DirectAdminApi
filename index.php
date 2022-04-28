@@ -14,7 +14,7 @@ function showUsersList()
     $userList = $client->getUsersListExample();
     // var_dump($userList); 
     
-    include_once 'views/list.php';
+    include_once 'views/list.blade.php';
 }
 
 showUsersList();

@@ -8,6 +8,9 @@ class DirectAdminClient
 {
     public function getUsersList(): array
     {
+
+        return [];
+
         $client = new Client([
             'base_uri' => 'http://49.12.245.225:2222'
         ]);
