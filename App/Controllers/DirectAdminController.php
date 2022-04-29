@@ -2,23 +2,55 @@
 
 namespace App\Controllers;
 
-use App\Services\DirectAdmin\DirectAdminClient;
-use Jenssegers\Blade\Blade;
 
-class DirectAdminController
+class DirectAdminController extends BaseController
 {
-    function showUsersList()
+    public function showUsersList()
     {
-        $client = new DirectAdminClient();
-        $userList = $client->getUsersListExample();
+        $userList = $this->directAdmin->getUsersList();
 
-        $blade = new Blade('views', 'cache');
-        return $blade->make('list', ['users' => $userList])->render();
+        return $this->view('list', ['users' => $userList]);
     }
 
-    function showCreateUserForm()
+    public function showCreateUserForm()
     {
-        $blade = new Blade('views', 'cache');
-        return $blade->make('create_view')->render();
+        return $this->view('show_form', [
+            'packages' => $this->directAdmin->getPackages()
+        ]);
+    }
+
+    public function createUser(array $formData) 
+    {
+        $createResponse = $this->directAdmin->createUser($formData);
+        
+        return $this->showResponseMessages($createResponse);
+    }
+
+    public function deleteUser(string $username) 
+    {
+        $createResponse = $this->directAdmin->deleteUser($username);
+        
+        return $this->showResponseMessages($createResponse);
+    }
+
+    public function showUserDetails(string $username)
+    {
+        return $this->view('details', [
+            'details' => $this->directAdmin->getUserDetails($username),
+            'packages' => $this->directAdmin->getPackages(),
+            'username' => $username
+        ]);
+    }
+
+    public function updateUserDetails(array $data)
+    {
+        $response = $this->directAdmin->editUserDetails($data);
+        return $this->showResponseMessages($response);
+    }
+
+    public function updateUserPassword(array $data)
+    {
+        $response = $this->directAdmin->updateUserPassword($data);
+        return $this->showResponseMessages($response);
     }
 }
