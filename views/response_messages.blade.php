@@ -1,5 +1,5 @@
 @if($messages && isset($messages['result']))
-    <div style="color:red">{{ $messages['result'] }}</div>
+    <div style="color:green">{{ $messages['result'] }}</div>
 @endif
 
 @if($messages && isset($messages['success']))

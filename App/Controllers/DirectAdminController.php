@@ -2,7 +2,6 @@
 
 namespace App\Controllers;
 
-
 class DirectAdminController extends BaseController
 {
     public function showUsersList()

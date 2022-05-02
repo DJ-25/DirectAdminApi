@@ -12,7 +12,7 @@
 
         <div>
             <label for="username">Username:</label>
-            <input type="text" id="username" name="username" placeholder="Username" required />
+            <input type="text" id="username" name="username" placeholder="4-8 characters" required />
         </div>
         <br>
 

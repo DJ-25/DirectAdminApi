@@ -12,7 +12,6 @@
     </tr>
 </table>
 
-
 @php
     $onOffFields = [
         'account' => 'Account',
@@ -37,30 +36,24 @@
     <input type="submit" value="Update">
 </form>
 
-
 <form action="edit.php?user={{ $username }}" method="POST">
-    {{-- <select name="package">
-        @foreach($packages as $package)
-            <option value="{{ $package }}">{{ $package }}</option>
-        @endforeach
-    </select> --}}
 
     <p>Change password</p>
     <label for="email">Email</label>
-    <input type="email" name="email" value="">
-    <br>
+    <input type="email" name="email" placeholder="Email" value="">
+    <br><br>
 
     <label for="oldpassword">Old password</label>
     <input type="password" name="oldpassword" placeholder="Old password" value="">
-    <br>
+    <br><br>
 
     <label for="password1">New password</label>
     <input type="password" name="password1" placeholder="New password" value="">
-    <br>
+    <br><br>
 
     <label for="password2">Confirm password</label>
     <input type="password" name="password2" placeholder="Confirm password" value="">
-    <br>
+    <br><br>
 
     <input type="hidden" name="user" value="{{ $username }}">
     <input type="hidden" name="action" value="password">
